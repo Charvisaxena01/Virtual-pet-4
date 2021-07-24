@@ -43,8 +43,9 @@ function setup() {
   });
    
   dog=createSprite(600,290,280,250);
+   dog.scale=0.5
   dog.addImage(sadDog);
-  dog.scale=0.5
+ 
   
  feed=createButton("Feed the dog");
  
