@@ -43,11 +43,11 @@ function setup() {
   });
    
   dog=createSprite(600,290,280,250);
-  dog.scale=0.5
   dog.addImage(sadDog);
-  
+  dog.scale=0.5
   
  feed=createButton("Feed the dog");
+ 
   feed.position(700,95);
   feed.mousePressed(feedDog);
  
@@ -86,7 +86,7 @@ console.log(dogFood)
   
   if(gameState==3){
     dog.addImage(washroom)
-    dog.scale= 0.5;
+    dog.scale= 1;
     milk.visible = false
   }
 
@@ -103,7 +103,7 @@ console.log(dogFood)
 
   if(gameState==4){
     dog.addImage(bedroom)
-    dog.scale = 0.5;
+    dog.scale = 1;
     milk.visible = false
   }
   var play = createButton("Lets Play")
@@ -115,7 +115,7 @@ console.log(dogFood)
   }));
   if(gameState == 5){
     dog.addImage(living_room)
-    dog.scale = 0.5
+    dog.scale = 1
     milk.visible = false
   }
 
@@ -131,7 +131,7 @@ console.log(dogFood)
   if(gameState==6){
     dog.addImage(garden)
     dog.y = 175
-    dog.scale = 0.5
+    dog.scale = 1
     milk.visible = false
   }
   textSize(25)
@@ -169,7 +169,7 @@ function update(state){
 function feedDog(){
 
   dog.addImage(happyDog);
-
+dog.scale = 0.5
   foodObj.updateFoodStock(foodObj.getFoodStock()-1);
   database.ref('/').update({
     Food:foodObj.getFoodStock(),
