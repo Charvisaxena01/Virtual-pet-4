@@ -43,9 +43,8 @@ function setup() {
   });
    
   dog=createSprite(600,290,280,250);
-   dog.scale=0.5
   dog.addImage(sadDog);
- 
+  dog.scale=0.5
   
  feed=createButton("Feed the dog");
  
@@ -60,11 +59,16 @@ function setup() {
 function draw() {
   background("green")
 
-  foodObj.display();   
+  foodObj.display();
+ 
+
+console.log(dogFood)
+   
+   
   if(gameState===1){
     dog.addImage(happyDog)
    dog.scale = 0.5
-    dog.y = 250
+    dog.y = 150
     milk.visible = false
   }
   if(gameState===2){
@@ -90,7 +94,7 @@ function draw() {
   sleepy.position(710,125)
 
   if(sleepy.mousePressed(function(){
-    dog.width = displayWidth
+    
     gameState = 4;
     database.ref('/').update({
       'gameState':gameState
@@ -126,11 +130,13 @@ function draw() {
   }));
   if(gameState==6){
     dog.addImage(garden)
+    //dog.y = 270
     dog.scale = 1
     milk.visible = false
   }
   textSize(25)
   text("Milk Bottles Remaining" + " "+dogFood,40,530)
+  console.log(gameState)
   drawSprites();
 }
 
