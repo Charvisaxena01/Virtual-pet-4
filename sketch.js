@@ -86,7 +86,7 @@ console.log(dogFood)
   
   if(gameState==3){
     dog.addImage(washroom)
-    dog.scale= 1;
+    dog.scale= 0.5;
     milk.visible = false
   }
 
@@ -103,7 +103,7 @@ console.log(dogFood)
 
   if(gameState==4){
     dog.addImage(bedroom)
-    dog.scale = 1;
+    dog.scale = 0.5;
     milk.visible = false
   }
   var play = createButton("Lets Play")
@@ -115,7 +115,7 @@ console.log(dogFood)
   }));
   if(gameState == 5){
     dog.addImage(living_room)
-    dog.scale = 1
+    dog.scale = 0.5
     milk.visible = false
   }
 
@@ -131,7 +131,7 @@ console.log(dogFood)
   if(gameState==6){
     dog.addImage(garden)
     dog.y = 175
-    dog.scale = 1
+    dog.scale = 0.5
     milk.visible = false
   }
   textSize(25)
