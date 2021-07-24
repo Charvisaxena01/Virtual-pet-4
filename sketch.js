@@ -60,12 +60,7 @@ function setup() {
 function draw() {
   background("green")
 
-  foodObj.display();
- 
-
-console.log(dogFood)
-   
-   
+  foodObj.display();   
   if(gameState===1){
     dog.addImage(happyDog)
    dog.scale = 0.5
@@ -131,13 +126,11 @@ console.log(dogFood)
   }));
   if(gameState==6){
     dog.addImage(garden)
-    dog.y = 175
     dog.scale = 1
     milk.visible = false
   }
   textSize(25)
   text("Milk Bottles Remaining" + " "+dogFood,40,530)
-  console.log(gameState)
   drawSprites();
 }
 
