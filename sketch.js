@@ -16,10 +16,11 @@ bedroom=loadImage("pet/Bed Room.png");
 living_room = loadImage("pet/Living Room.png")
 milk = loadImage("images/Milk.png")
 bg = loadImage("images/bg.jpeg")
+milk2 = loadImage("virtual pet images/milk.png")
 }     
 function setup() {
   database=firebase.database();
-  createCanvas(800,600);
+  createCanvas(900,600);
   
   foodObj = new Food();
 
@@ -54,6 +55,14 @@ function setup() {
   addFood=createButton("Add Food");
   addFood.position(800,95);
   addFood.mousePressed(addFoods);
+
+ milkBottle = createSprite(30,500,30,30)
+ milkBottle.addImage(milk2)
+milkBottle.scale = 0.1
+
+milkBottle2 = createSprite(500,300,30,30)
+milkBottle2.addImage(milk2)
+milkBottle2.scale = 0.1
 }
 
 function draw() {
@@ -69,13 +78,13 @@ console.log(dogFood)
     dog.addImage(happyDog)
    dog.scale = 0.5
     dog.y = 150
-    milk.visible = false
+   
   }
   if(gameState===2){
     dog.addImage(sadDog)
     dog.scale = 0.5
     dog.y = 150
-    milk.visible = false
+   
   }
   var Bath = createButton("I want to take Bath");
   Bath.position(560,125)
@@ -87,7 +96,7 @@ console.log(dogFood)
   if(gameState==3){
     dog.addImage(washroom)
     dog.scale= 1;
-    milk.visible = false
+    milkBottle2.visible = false
   }
 
   var sleepy = createButton("I am very Sleepy")
@@ -104,26 +113,25 @@ console.log(dogFood)
   if(gameState==4){
     dog.addImage(bedroom)
     dog.scale = 1;
-    milk.visible = false
+    milkBottle2.visible = false
   }
   var play = createButton("Lets Play")
   play.position(500,160)
   if(play.mousePressed(function(){
     gameState = 5;
     database.ref('/').update({'gameState':gameState})
-    this.image.visible = false
   }));
   if(gameState == 5){
     dog.addImage(living_room)
     dog.scale = 1
-    milk.visible = false
+    milkBottle2.visible = false
   }
 
   var garden1 = createButton("Lets play in the garden")
   garden1.position(585,160)
 
   if(garden1.mousePressed(function(){
-    gameState = 6;
+    gameState = 6;``
     database.ref('/').update({
       'gameState':gameState
     })
@@ -132,10 +140,10 @@ console.log(dogFood)
     dog.addImage(garden)
     //dog.y = 270
     dog.scale = 1
-    milk.visible = false
+    milkBottle2.visible = false
   }
   textSize(25)
-  text("Milk Bottles Remaining" + " "+dogFood,40,530)
+  text( "Milk Bottles Remaining " + dogFood,60,530)
   console.log(gameState)
   drawSprites();
 }
@@ -152,6 +160,8 @@ function readStock(data){
 
 //function to add food in stock
 function addFoods(){
+  dog.addImage(sadDog)
+  milkBottle2.visible = false
   foodS++;
   
   database.ref('/').update({
@@ -167,7 +177,8 @@ function update(state){
 }
 
 function feedDog(){
-
+  milkBottle2.visible = true
+milkBottle2.y = 400
   dog.addImage(happyDog);
 dog.scale = 0.5
   foodObj.updateFoodStock(foodObj.getFoodStock()-1);
